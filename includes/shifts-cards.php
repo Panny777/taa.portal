@@ -1,6 +1,6 @@
 <?php
 // Total Shift Counting
-$total_shifts_query = "SELECT * FROM shifts";
+$total_shifts_query = "SELECT * FROM shifts LIMIT 234";
 $total_shifts_result = mysqli_query($connection, $total_shifts_query);
 if (!$total_shifts_result) {
     die("QUERY FAILED" . mysqli_error($connection));
@@ -9,7 +9,7 @@ $total_shifts_count = mysqli_num_rows($total_shifts_result);
 
 
 // Open Shift Counting
-$open_shifts_query = "SELECT * FROM shifts WHERE `shifts`.`shiftstatus` = 1";
+$open_shifts_query = "SELECT * FROM shifts WHERE `shifts`.`shiftstatus` = 1 LIMIT 3";
 $open_shifts_result = mysqli_query($connection, $open_shifts_query);
 
 if (!$open_shifts_result) {
@@ -18,7 +18,7 @@ if (!$open_shifts_result) {
 $open_shifts_count = mysqli_num_rows($open_shifts_result);
 
 // Closed Shift Counting
-$closed_shifts_query = "SELECT * FROM shifts WHERE `shifts`.`shiftstatus` = 4";
+$closed_shifts_query = "SELECT * FROM shifts WHERE `shifts`.`shiftstatus` = 4 LIMIT 227";
 $closed_shifts_result = mysqli_query($connection, $closed_shifts_query);
 
 if (!$closed_shifts_result) {
@@ -26,7 +26,7 @@ if (!$closed_shifts_result) {
 }
 $closed_shifts_count = mysqli_num_rows($closed_shifts_result);
 
-$bill_pay_shifts_query = "SELECT * FROM shifts WHERE `shifts`.`billpay_TrxId` IS NULL ORDER BY `shifts`.`id` DESC LIMIT 50";
+$bill_pay_shifts_query = "SELECT * FROM shifts WHERE `shifts`.`billpay_TrxId` IS NULL ORDER BY `shifts`.`id` DESC LIMIT 14";
 $bill_pay_shifts_result = mysqli_query($connection, $bill_pay_shifts_query);
 
 if (!$bill_pay_shifts_result) {
